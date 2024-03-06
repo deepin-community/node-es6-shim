@@ -1,5 +1,162 @@
-template-repository (1.0-1) unstable; urgency=medium
+node-es6-shim (0.35.6+ds+~0.31.42-2) unstable; urgency=medium
 
-  * Initial release
+  * Team upload
+  * Fix autopkgtest
+  * Update __proto__ patch (fixes reverse-dependencies autopkgtest)
 
- -- Tsic404 <liuheng@deepin.org>  Sat, 28 Jan 2023 13:46:49 +0800
+ -- Yadd <yadd@debian.org>  Tue, 25 Oct 2022 12:06:17 +0200
+
+node-es6-shim (0.35.6+ds+~0.31.42-1) unstable; urgency=medium
+
+  * Team upload
+  * Embed typescript declarations and repack
+  * Add debian/clean
+  * Drop dependency to nodejs
+
+ -- Yadd <yadd@debian.org>  Tue, 25 Oct 2022 10:27:56 +0200
+
+node-es6-shim (0.35.6+ds-4) unstable; urgency=medium
+
+  * Team upload
+  * Update standards version to 4.6.1, no changes needed.
+  * Add debian/gbp.conf
+  * Fix filenamemangle
+  * Drop __proto__ calls
+
+ -- Yadd <yadd@debian.org>  Wed, 21 Sep 2022 15:37:26 +0200
+
+node-es6-shim (0.35.6+ds-3) unstable; urgency=medium
+
+  [ Debian Janitor ]
+  * Set upstream metadata fields: Bug-Submit.
+  * Remove obsolete field Name from debian/upstream/metadata (already present in
+    machine-readable debian/copyright).
+
+  [ Julien Puydt ]
+  * Fix d/watch.
+  * Bump std-vers to 4.6.0.
+
+ -- Julien Puydt <jpuydt@debian.org>  Sun, 22 Aug 2021 08:11:41 +0200
+
+node-es6-shim (0.35.6+ds-2) unstable; urgency=medium
+
+  * Fix broken symlinks (Closes: #988654).
+
+ -- Julien Puydt <jpuydt@debian.org>  Wed, 19 May 2021 08:22:39 +0200
+
+node-es6-shim (0.35.6+ds-1) unstable; urgency=medium
+
+  [ Debian Janitor ]
+  * Trim trailing whitespace.
+  * Set upstream metadata fields: Repository, Repository-Browse.
+  * Update standards version to 4.4.1, no changes needed.
+
+  [ Julien Puydt ]
+  * New upstream release.
+  * Declare d/rules doesn't require root.
+  * Bump std-vers to 4.5.0.
+  * Bump dh compat to 13.
+  * Adapt b-dep from node-uglify to uglifyjs.
+  * Install to /usr/share/nodejs and not /usr/lib/nodejs.
+  * Add more upstream metadata information.
+  * Mark the require test as superficial.
+
+ -- Julien Puydt <jpuydt@debian.org>  Tue, 20 Oct 2020 12:58:25 +0200
+
+node-es6-shim (0.35.5+ds-2) unstable; urgency=medium
+
+  * Bump std-ver to 4.4.0.
+  * Bump dh compat to 12 and drop d/compat.
+
+ -- Julien Puydt <jpuydt@debian.org>  Sat, 27 Jul 2019 18:31:10 +0200
+
+node-es6-shim (0.35.5+ds-1) unstable; urgency=medium
+
+  * New upstream release.
+  * Refresh packaging:
+    - Update dates in d/copyright.
+    - Mark the package M-A: foreign following hinter.
+    - Bump std-ver to 4.3.0.
+
+ -- Julien Puydt <jpuydt@debian.org>  Mon, 15 Apr 2019 19:28:18 +0200
+
+node-es6-shim (0.35.4+ds-2) unstable; urgency=medium
+
+  * Team upload.
+  * Fix build-depend on node-uglify (not uglifyjs).
+    Closes: Bug#919732. Thanks to Santiago Vila.
+
+ -- Jonas Smedegaard <dr@jones.dk>  Sat, 19 Jan 2019 03:08:05 +0100
+
+node-es6-shim (0.35.4+ds-1) unstable; urgency=medium
+
+  [ Jelmer Vernooĳ ]
+  * Use secure copyright file specification URI.
+
+  [ Julien Puydt ]
+  * Remove compiled files from the tarball.
+  * New upstream release.
+  * Refresh packaging:
+    - Use my debian.org mail address.
+    - Update dates in d/copyright.
+    - Move to section javascript.
+    - Bump d/watch to version 4.
+    - Bump dh compat to 11.
+    - Bump std-ver to 4.2.1.
+    - Point Vcs-* fields to salsa.
+    - Rewrite d/rules to use upstream's options.
+    - Rewrite description slightly.
+
+ -- Julien Puydt <jpuydt@debian.org>  Sat, 03 Nov 2018 08:54:43 +0100
+
+node-es6-shim (0.35.3+ds-1) unstable; urgency=medium
+
+  * New upstream release.
+
+ -- Julien Puydt <julien.puydt@laposte.net>  Wed, 25 Jan 2017 09:24:08 +0100
+
+node-es6-shim (0.35.2+ds-1) unstable; urgency=medium
+
+  * New upstream release.
+  * Push dh compat to 10.
+  * Mark the libjs- package as Multi-Arch: foreign (tracker hint).
+
+ -- Julien Puydt <julien.puydt@laposte.net>  Wed, 07 Dec 2016 16:57:12 +0100
+
+node-es6-shim (0.35.1+ds-1) unstable; urgency=medium
+
+  * New upstream release.
+  * Push standards-version to 3.9.8.
+  * Ship map files. (Closes: #814674)
+  * Use https in Vcs-* fields.
+  * Make node-es6-shim ship links to libjs-es6-shim.
+  * Update copyright years.
+
+ -- Julien Puydt <julien.puydt@laposte.net>  Tue, 31 May 2016 17:23:12 +0200
+
+node-es6-shim (0.34.1+ds-1) unstable; urgency=medium
+
+  * New upstream release.
+
+ -- Julien Puydt <julien.puydt@laposte.net>  Fri, 08 Jan 2016 14:59:33 +0100
+
+node-es6-shim (0.34.0+ds-1) unstable; urgency=medium
+
+  * New upstream release.
+  * Removed lintian overrides since there are no more
+    node_modules/ files in the sources.
+
+ -- Julien Puydt <julien.puydt@laposte.net>  Sat, 02 Jan 2016 14:40:27 +0100
+
+node-es6-shim (0.33.10+ds-1) unstable; urgency=medium
+
+  * New upstream release.
+  * Stop shipping node_modules/* as we don't need it.
+
+ -- Julien Puydt <julien.puydt@laposte.net>  Sat, 07 Nov 2015 13:09:58 +0100
+
+node-es6-shim (0.33.6-1) unstable; urgency=low
+
+  * Initial release (Closes: #801922)
+
+ -- Julien Puydt <julien.puydt@laposte.net>  Fri, 16 Oct 2015 08:53:08 +0200

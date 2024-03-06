@@ -1,0 +1,71 @@
+Description: drop __proto__ calls
+Author: Yadd <yadd@debian.org>
+Forwarded: no
+Last-Update: 2022-10-25
+
+--- a/es6-sham.js
++++ b/es6-sham.js
+@@ -111,7 +111,7 @@
+       } else {
+         // verify if null objects are buggy
+         /* eslint-disable no-proto */
+-        set.__proto__ = objProto;
++        Object.setPrototypeOf(set, objProto);
+         /* eslint-enable no-proto */
+         // if null objects are buggy
+         // nodejs 0.8 to 0.10
+@@ -119,7 +119,7 @@
+           setPrototypeOf = function (origin, proto) {
+             // use such bug to promote
+             /* eslint-disable no-proto */
+-            origin.__proto__ = proto;
++            Object.setPrototypeOf(origin, proto);
+             /* eslint-enable no-proto */
+             return origin;
+           };
+@@ -131,7 +131,7 @@
+             if (getPrototypeOf(origin)) {
+               // use __proto__ to promote
+               /* eslint-disable no-proto */
+-              origin.__proto__ = proto;
++              Object.setPrototypeOf(origin, proto);
+               /* eslint-enable no-proto */
+               return origin;
+             } else {
+--- a/es6-shim.js
++++ b/es6-shim.js
+@@ -1561,13 +1561,21 @@
+           set = Object.getOwnPropertyDescriptor(Object.prototype, magic).set;
+           _call(set, {}, null);
+         } catch (e) {
+-          if (Object.prototype !== {}[magic]) {
++          const protoAccess = (magic === '__proto__' && Object.getPrototypeOf);
++          if (protoAccess) {
++            if (Object.prototype !== Object.getPrototypeOf({})) return;
++          }
++          else if (Object.prototype !== {}[magic]) {
+             // IE < 11 cannot be shimmed
+             return;
+           }
+           // probably Chrome or some old Mobile stock browser
+           set = function (proto) {
+-            this[magic] = proto;
++            if (protoAccess) {
++              Object.setPrototypeOf(this, proto);
++            } else {
++              this[magic] = proto;
++            }
+           };
+           // please note that this will **not** work
+           // in those browsers that do not inherit
+--- a/test/array.js
++++ b/test/array.js
+@@ -12,7 +12,7 @@
+   var ifSymbolUnscopablesIt = isSymbol(Sym.unscopables) ? it : it.skip;
+   var ifShimIt = (typeof process !== 'undefined' && process.env.NO_ES6_SHIM) ? it.skip : it;
+   var ifSupportsDescriptorsIt = Object.getOwnPropertyDescriptor ? it : it.skip;
+-  var ifHasDunderProtoIt = [].__proto__ === Array.prototype ? it : it.skip; // eslint-disable-line no-proto
++  var ifHasDunderProtoIt = Object.getPrototypeOf([]) === Array.prototype ? it : it.skip; // eslint-disable-line no-proto
+ 
+   var isNegativeZero = function (x) {
+     return (1 / x) < 0;

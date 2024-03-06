@@ -1,0 +1,11 @@
+# see git-dpm(1) from git-dpm package
+6aab0ac2fed25b4dee8a342ccd9db88e2c0d85da
+6aab0ac2fed25b4dee8a342ccd9db88e2c0d85da
+6aab0ac2fed25b4dee8a342ccd9db88e2c0d85da
+6aab0ac2fed25b4dee8a342ccd9db88e2c0d85da
+node-es6-shim_0.34.0+ds.orig.tar.gz
+c3cd798cddf6d2a63d58791151b802d069f11f1a
+129272
+debianTag="debian/%e%v"
+patchedTag="patched/%e%v"
+upstreamTag="upstream/%e%u"

@@ -1,15 +1,40 @@
-Source: template-repository
-Section: unknown
+Source: node-es6-shim
+Section: javascript
 Priority: optional
-Maintainer: Tsic404 <liuheng@deepin.org>
-Build-Depends: debhelper (>= 11)
-Standards-Version: 4.1.3
-Homepage: https://github.com/deepin-community/template-repository
-#Vcs-Browser: https://salsa.debian.org/debian/deepin-community-template-repository
-#Vcs-Git: https://salsa.debian.org/debian/deepin-community-template-repository.git
+Maintainer: Debian Javascript Maintainers <pkg-javascript-devel@lists.alioth.debian.org>
+Uploaders: Julien Puydt <jpuydt@debian.org>
+Build-Depends: debhelper-compat (= 13), nodejs, uglifyjs, node-source-map
+Standards-Version: 4.6.1
+Rules-Requires-Root: no
+Homepage: https://github.com/paulmillr/es6-shim/
+Vcs-Git: https://salsa.debian.org/js-team/node-es6-shim.git
+Vcs-Browser: https://salsa.debian.org/js-team/node-es6-shim
 
-Package: template-repository
-Architecture: any
-Depends: ${shlibs:Depends}, ${misc:Depends}
-Description: <insert up to 60 chars description>
- <insert long description, indented with spaces>
+Package: node-es6-shim
+Architecture: all
+Multi-Arch: foreign
+Depends: ${misc:Depends}, libjs-es6-shim (= ${binary:Version})
+Provides: ${nodejs:Provides}
+Description: ECMAScript 6 shims for legacy JavaScript engines (Node.js)
+ The es6-shim library monkey-patches a JavaScript context to contain all
+ ECMAScript 6 (Harmony) methods that can be faithfully emulated with a legacy
+ JavaScript engine.
+ .
+ The es6-sham part tries to complete the picture as best as possible, but
+ for those methods the result is not as close and mostly intends to avoid
+ runtime errors : in many cases it might just silently fail.
+ .
+ Node.js is an event-based server-side JavaScript engine.
+
+Package: libjs-es6-shim
+Architecture: all
+Multi-Arch: foreign
+Depends: ${misc:Depends}
+Description: ECMAScript 6 shims for legacy JavaScript engines (library)
+ The es6-shim library monkey-patches a JavaScript context to contain all
+ ECMAScript 6 (Harmony) methods that can be faithfully emulated with a legacy
+ JavaScript engine.
+ .
+ The es6-sham part tries to complete the picture as best as possible, but
+ for those methods the result is not as close and mostly intends to avoid
+ runtime errors : in many cases it might just silently fail.

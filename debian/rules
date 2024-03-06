@@ -1,4 +1,16 @@
 #!/usr/bin/make -f
 
+UGLIFYJS=uglifyjs --ie8 --keep-fnames --comments -m -b ascii_only=true,beautify=false
+
 %:
 	dh $@
+
+override_dh_auto_build:
+	$(UGLIFYJS) es6-shim.js --source-map filename=es6-shim.map -o es6-shim.min.js
+	$(UGLIFYJS) es6-sham.js --source-map filename=es6-sham.map -o es6-sham.min.js
+
+# Debian doesn't have all it takes
+override_dh_auto_test:
+
+override_dh_installchangelogs:
+	dh_installchangelogs CHANGELOG.md

@@ -1,0 +1,9 @@
+version=4
+opts=\
+repacksuffix=+ds,\
+dversionmangle=s/\+(debian|dfsg|ds|deb)(\.\d+)?$//,\
+filenamemangle=s/.*?(\d[\d\.-]*@ARCHIVE_EXT@)/node-es6-shim-$1/ \
+ https://github.com/paulmillr/es6-shim/tags .*/v?([\d\.]+).tar.gz group
+
+opts="searchmode=plain,component=types-es6-shim,ctype=nodejs,pgpmode=none,filenamemangle=s/^.*?(\d[\d\.-]*@ARCHIVE_EXT@)/node-types-es6-shim-$1/" \
+ https://registry.npmjs.org/@types/es6-shim https://registry.npmjs.org/@types/es6-shim/-/es6-shim-([\d\.]+)@ARCHIVE_EXT@ group
